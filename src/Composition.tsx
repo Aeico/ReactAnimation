@@ -17,7 +17,6 @@ export const MyComposition = () => {
 				color: 'green',
 				opacity: opacity,
 			}}>
-			{durationInFrames / fps}
 			<Compass />
 		</div>
 	);

@@ -1,6 +1,6 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
-import CompassSVG from './compass.svg';
+import CompassSVG from './svg/compass.svg';
 
 export const Compass: React.FC = () => {
   return (
@@ -8,11 +8,11 @@ export const Compass: React.FC = () => {
       style={{
         justifyContent: "center",
         alignItems: "center",
-        padding: 10,
-        paddingTop: 300,
-        transform: "scale(1.2)",
+        padding: 0,
+        paddingTop: 0,
+        transform: "scale(0.5)",
       }}>
-      <img src={CompassSVG} width={250} height={250}/>
+      <img src={CompassSVG}/>
     </AbsoluteFill>
   )
 }
