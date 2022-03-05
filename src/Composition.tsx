@@ -1,11 +1,11 @@
 import { useVideoConfig, useCurrentFrame } from "remotion";
 import { Compass } from "./Compass";
+import { World } from "./World";
 
 export const MyComposition = () => {
 	const { fps, durationInFrames, width, height } = useVideoConfig();
 
 	const frame = useCurrentFrame();
-	const opacity = frame / durationInFrames;
 
 	return (
 		<div
@@ -15,8 +15,9 @@ export const MyComposition = () => {
 				fontSize: '10em',
 				background: 'white',
 				color: 'green',
-				opacity: opacity,
+				opacity: 1,
 			}}>
+			<World />
 			<Compass />
 		</div>
 	);

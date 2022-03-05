@@ -1,15 +1,13 @@
 import React from "react";
-import { AbsoluteFill, interpolate } from "remotion";
+import { AbsoluteFill } from "remotion";
 import { useVideoConfig, useCurrentFrame } from "remotion";
-import CompassSVG from './svg/compass.svg';
+import WorldSVG from './svg/world.svg';
 
-export const Compass: React.FC = () => {
-
+export const World: React.FC = () => {
   const { fps, durationInFrames, width, height } = useVideoConfig();
 
-	const frame = useCurrentFrame();
-
-  var transformVal = interpolate((frame+1)/durationInFrames, [0,1], [0.5,0.01])
+  const frame = useCurrentFrame();
+	const opacity = 1;
 
   return (
     <AbsoluteFill
@@ -18,9 +16,10 @@ export const Compass: React.FC = () => {
         alignItems: "center",
         padding: 0,
         paddingTop: 0,
-        transform: "scale("+transformVal+")",
+        transform: "scale(1.6)",
+        opacity: (frame-(1*fps)) / (durationInFrames/3),
       }}>
-      <img src={CompassSVG}/>
+      <img src={WorldSVG}/>
     </AbsoluteFill>
   )
 }
