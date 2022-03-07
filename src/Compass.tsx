@@ -9,7 +9,7 @@ export const Compass: React.FC = () => {
 
 	const frame = useCurrentFrame();
 
-  var transformVal = interpolate((frame+1)/durationInFrames, [0,1], [0.5,0.01])
+  var sizeInter = 5;
 
   var leftEnd = 870;
   var topEnd = -450;
@@ -17,10 +17,22 @@ export const Compass: React.FC = () => {
   var leftInter = 0;
   var topInter = 0;
 
-  if(frame>fps) {
+  
+  if (frame > fps && frame < fps*3) {
+    leftInter = (frame-fps)/(fps*2);
+    topInter = (frame-fps)/(fps*2);
+  } 
+  if (frame >= fps*3) {
+    sizeInter = 0.85;
     leftInter = 1;
     topInter = 1;
+  } else {
+    sizeInter = (frame+25)/durationInFrames;
   }
+
+  console.log(sizeInter)
+
+  var transformVal = interpolate(sizeInter, [0,1], [0.5,0.01]);
 
   var leftTransformVal = interpolate(leftInter, [0,1], [0,leftEnd]);
   var topTransformVal = interpolate(topInter, [0,1], [0,topEnd]);
